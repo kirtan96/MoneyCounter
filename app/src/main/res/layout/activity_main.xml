@@ -1,17 +1,14 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ScrollView01"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#ffffd07f">
+    android:layout_height="wrap_content"
+    android:background="#4ed084">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-        android:background="@drawable/bg"
-        android:layout_centerHorizontal="false" >
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:id="@+id/rel1">
 
         <EditText
             android:layout_width="90dp"
@@ -34,7 +31,8 @@
             android:layout_alignLeft="@+id/hundreds"
             android:layout_alignStart="@+id/hundreds"
             android:textSize="24dp"
-            android:paddingBottom="20dp" />
+            android:paddingBottom="20dp"
+            android:textColor="#fff"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -59,7 +57,8 @@
             android:layout_alignRight="@+id/fiftys"
             android:layout_alignEnd="@+id/fiftys"
             android:textSize="24dp"
-            android:paddingBottom="20dp" />
+            android:paddingBottom="20dp"
+            android:textColor="#fff"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -85,7 +84,8 @@
             android:layout_alignLeft="@+id/twenties"
             android:layout_alignStart="@+id/twenties"
             android:textSize="24dp"
-            android:paddingBottom="20dp" />
+            android:paddingBottom="20dp"
+            android:textColor="#fff"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -111,7 +111,8 @@
             android:layout_below="@+id/tens"
             android:layout_alignLeft="@+id/tens"
             android:layout_alignStart="@+id/tens"
-            android:paddingBottom="20dp" />
+            android:paddingBottom="20dp"
+            android:textColor="#fff"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -137,7 +138,8 @@
             android:layout_alignRight="@+id/fives"
             android:layout_alignEnd="@+id/fives"
             android:textSize="24dp"
-            android:paddingBottom="20dp" />
+            android:paddingBottom="20dp"
+            android:textColor="#fff"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -163,7 +165,8 @@
             android:layout_below="@+id/ones"
             android:layout_alignLeft="@+id/ones"
             android:layout_alignStart="@+id/ones"
-            android:paddingBottom="20dp" />
+            android:paddingBottom="20dp"
+            android:textColor="#fff"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -189,7 +192,8 @@
             android:layout_alignLeft="@+id/quarters"
             android:layout_alignStart="@+id/quarters"
             android:paddingBottom="20dp"
-            android:textSize="24dp" />
+            android:textSize="24dp"
+            android:textColor="#fff"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -215,7 +219,8 @@
             android:layout_alignLeft="@+id/dimes"
             android:layout_alignStart="@+id/dimes"
             android:paddingBottom="20dp"
-            android:textSize="24dp" />
+            android:textSize="24dp"
+            android:textColor="#fff"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -241,7 +246,8 @@
             android:layout_alignLeft="@+id/nickels"
             android:layout_alignStart="@+id/nickels"
             android:paddingBottom="20dp"
-            android:textSize="24dp" />
+            android:textSize="24dp"
+            android:textColor="#fff"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -258,38 +264,32 @@
             android:hint="# of $0.01"
             android:singleLine="true" />
 
-        <Button
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Count Total"
+            android:text="Total:"
             android:id="@+id/totalbutton"
-            android:background="@drawable/bg"
             android:layout_below="@+id/cents"
             android:layout_alignRight="@+id/cents"
-            android:layout_alignEnd="@+id/cents" />
+            android:layout_alignEnd="@+id/cents"
+            android:textAllCaps="false"
+            android:textSize="24sp"
+            android:textColor="#fff"
+            android:background="@android:color/transparent" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$0"
+            android:text="$0.00"
             android:id="@+id/totaldollar"
-            android:textSize="24dp"
             android:layout_alignBottom="@+id/totalbutton"
-            android:layout_toLeftOf="@+id/clear"
-            android:layout_alignLeft="@+id/cen"
-            android:layout_alignStart="@+id/cen"
             android:layout_below="@+id/cents"
-            android:textAlignment="center" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clear All"
-            android:id="@+id/clear"
-            android:background="@drawable/bg"
-            android:layout_alignBottom="@+id/totaldollar"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textStyle="normal|bold"
+            android:textSize="26dp"
+            android:layout_alignLeft="@+id/cen"
+            android:layout_alignStart="@+id/cen" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -298,7 +298,10 @@
             android:layout_alignBottom="@+id/hun"
             android:layout_toRightOf="@+id/hun"
             android:layout_toEndOf="@+id/hun"
-            android:src="@android:drawable/arrow_up_float" />
+            android:src="@android:drawable/arrow_up_float"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -307,7 +310,10 @@
             android:layout_alignBottom="@+id/fif"
             android:layout_toRightOf="@+id/fif"
             android:layout_toEndOf="@+id/fif"
-            android:src="@android:drawable/arrow_up_float" />
+            android:src="@android:drawable/arrow_up_float"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -316,7 +322,10 @@
             android:layout_alignBottom="@+id/twe"
             android:layout_toRightOf="@+id/twe"
             android:layout_toEndOf="@+id/twe"
-            android:src="@android:drawable/arrow_up_float" />
+            android:src="@android:drawable/arrow_up_float"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -325,7 +334,10 @@
             android:layout_alignBottom="@+id/ten"
             android:layout_toRightOf="@+id/ten"
             android:layout_toEndOf="@+id/ten"
-            android:src="@android:drawable/arrow_up_float" />
+            android:src="@android:drawable/arrow_up_float"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -334,7 +346,10 @@
             android:layout_alignBottom="@+id/fiv"
             android:layout_toRightOf="@+id/fiv"
             android:layout_toEndOf="@+id/fiv"
-            android:src="@android:drawable/arrow_up_float" />
+            android:src="@android:drawable/arrow_up_float"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -343,7 +358,10 @@
             android:layout_alignBottom="@+id/one"
             android:layout_toRightOf="@+id/one"
             android:layout_toEndOf="@+id/one"
-            android:src="@android:drawable/arrow_up_float" />
+            android:src="@android:drawable/arrow_up_float"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -352,7 +370,10 @@
             android:layout_alignBottom="@+id/qua"
             android:layout_toRightOf="@+id/qua"
             android:layout_toEndOf="@+id/qua"
-            android:src="@android:drawable/arrow_up_float" />
+            android:src="@android:drawable/arrow_up_float"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -361,7 +382,10 @@
             android:layout_alignBottom="@+id/dim"
             android:layout_toRightOf="@+id/dim"
             android:layout_toEndOf="@+id/dim"
-            android:src="@android:drawable/arrow_up_float" />
+            android:src="@android:drawable/arrow_up_float"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -370,7 +394,10 @@
             android:layout_alignBottom="@+id/nic"
             android:layout_toRightOf="@+id/nic"
             android:layout_toEndOf="@+id/nic"
-            android:src="@android:drawable/arrow_up_float" />
+            android:src="@android:drawable/arrow_up_float"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -379,7 +406,10 @@
             android:layout_alignBottom="@+id/cen"
             android:layout_toRightOf="@+id/cen"
             android:layout_toEndOf="@+id/cen"
-            android:src="@android:drawable/arrow_up_float" />
+            android:src="@android:drawable/arrow_up_float"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -388,7 +418,10 @@
             android:src="@android:drawable/arrow_down_float"
             android:layout_alignTop="@+id/increasehunButton"
             android:layout_toRightOf="@+id/increasehunButton"
-            android:layout_toEndOf="@+id/increasehunButton" />
+            android:layout_toEndOf="@+id/increasehunButton"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -397,7 +430,10 @@
             android:src="@android:drawable/arrow_down_float"
             android:layout_alignTop="@+id/increasefifButton"
             android:layout_toRightOf="@+id/increasefifButton"
-            android:layout_toEndOf="@+id/increasefifButton" />
+            android:layout_toEndOf="@+id/increasefifButton"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -406,7 +442,10 @@
             android:src="@android:drawable/arrow_down_float"
             android:layout_alignTop="@+id/increasetweButton"
             android:layout_toRightOf="@+id/increasetweButton"
-            android:layout_toEndOf="@+id/increasetweButton" />
+            android:layout_toEndOf="@+id/increasetweButton"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -415,7 +454,10 @@
             android:src="@android:drawable/arrow_down_float"
             android:layout_alignTop="@+id/increasetenButton"
             android:layout_toRightOf="@+id/increasetenButton"
-            android:layout_toEndOf="@+id/increasetenButton" />
+            android:layout_toEndOf="@+id/increasetenButton"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -424,7 +466,10 @@
             android:src="@android:drawable/arrow_down_float"
             android:layout_alignTop="@+id/increasefivButton"
             android:layout_toRightOf="@+id/increasefivButton"
-            android:layout_toEndOf="@+id/increasefivButton" />
+            android:layout_toEndOf="@+id/increasefivButton"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -433,7 +478,10 @@
             android:src="@android:drawable/arrow_down_float"
             android:layout_alignTop="@+id/increaseoneButton"
             android:layout_toRightOf="@+id/increaseoneButton"
-            android:layout_toEndOf="@+id/increaseoneButton" />
+            android:layout_toEndOf="@+id/increaseoneButton"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -442,7 +490,10 @@
             android:src="@android:drawable/arrow_down_float"
             android:layout_alignTop="@+id/increasequaButton"
             android:layout_toRightOf="@+id/increasequaButton"
-            android:layout_toEndOf="@+id/increasequaButton" />
+            android:layout_toEndOf="@+id/increasequaButton"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -451,7 +502,10 @@
             android:src="@android:drawable/arrow_down_float"
             android:layout_alignTop="@+id/increasedimButton"
             android:layout_toRightOf="@+id/increasedimButton"
-            android:layout_toEndOf="@+id/increasedimButton" />
+            android:layout_toEndOf="@+id/increasedimButton"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -460,7 +514,10 @@
             android:src="@android:drawable/arrow_down_float"
             android:layout_alignTop="@+id/increasenicButton"
             android:layout_toRightOf="@+id/increasenicButton"
-            android:layout_toEndOf="@+id/increasenicButton" />
+            android:layout_toEndOf="@+id/increasenicButton"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -469,7 +526,10 @@
             android:src="@android:drawable/arrow_down_float"
             android:layout_alignTop="@+id/increasecenButton"
             android:layout_toRightOf="@+id/increasecenButton"
-            android:layout_toEndOf="@+id/increasecenButton" />
+            android:layout_toEndOf="@+id/increasecenButton"
+            android:background="#f4f4f4"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -481,7 +541,25 @@
             android:paddingBottom="20dp"
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/hun"
-            android:layout_toStartOf="@+id/hun" />
+            android:layout_toStartOf="@+id/hun"
+            android:textColor="#fff"
+            android:textAllCaps="false"
+            android:layout_marginTop="20dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clear All"
+            android:id="@+id/clear"
+            android:textAllCaps="false"
+            android:textSize="24sp"
+            android:background="#fff"
+            android:textColor="@android:color/holo_red_light"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:layout_below="@id/totaldollar" />
 
     </RelativeLayout>
+
+
 </ScrollView>

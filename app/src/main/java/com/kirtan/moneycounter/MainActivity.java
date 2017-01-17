@@ -2,6 +2,8 @@ package com.kirtan.moneycounter;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
     double total = 0;
     int hundred, fifty, twenty, ten, five, one, quarter, dime, nickel, cent;
 
-    TextView totalDollars;
-    Button totalButton, clear;
+    TextView totalDollars, totalButton;
+    Button clear;
     EditText hundreds, fiftys, twentys, tens, fives, ones, quarters, dimes, nickels, cents;
     ImageButton increasehun, decreasehun, increasefif, decreasefif,
             increasetwe, decreasetwe, increaseten, decreaseten, increasefiv, decreasefiv,
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         totalDollars = (TextView) findViewById(R.id.totaldollar);
-        totalButton = (Button) findViewById(R.id.totalbutton);
+        totalButton = (TextView) findViewById(R.id.totalbutton);
         clear = (Button) findViewById(R.id.clear);
         hundreds = (EditText) findViewById(R.id.hun);
         fiftys = (EditText) findViewById(R.id.fif);
@@ -62,81 +64,38 @@ public class MainActivity extends AppCompatActivity {
         decreasecen = (ImageButton) findViewById(R.id.decreasecenButton);
 
 
+        TextWatcher onChangeListener = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                calculate();
+            }
+        };
+
+        hundreds.addTextChangedListener(onChangeListener);
+        fiftys.addTextChangedListener(onChangeListener);
+        twentys.addTextChangedListener(onChangeListener);
+        tens.addTextChangedListener(onChangeListener);
+        fives.addTextChangedListener(onChangeListener);
+        ones.addTextChangedListener(onChangeListener);
+        quarters.addTextChangedListener(onChangeListener);
+        dimes.addTextChangedListener(onChangeListener);
+        nickels.addTextChangedListener(onChangeListener);
+        cents.addTextChangedListener(onChangeListener);
+
         totalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(hundreds.getText().toString().equals(""))
-                {
-                    hundred = 0;
-                }
-                else {
-                    hundred = (int) Integer.parseInt(hundreds.getText().toString());
-                }
-                if(fiftys.getText().toString().equals(""))
-                {
-                    fifty = 0;
-                }
-                else {
-                    fifty = (int) Integer.parseInt(fiftys.getText().toString());
-                }
-                if(twentys.getText().toString().equals(""))
-                {
-                    twenty = 0;
-                }
-                else {
-                    twenty = (int) Integer.parseInt(twentys.getText().toString());
-                }
-                if(tens.getText().toString().equals(""))
-                {
-                    ten = 0;
-                }
-                else {
-                    ten = (int) Integer.parseInt(tens.getText().toString());
-                }
-                if(fives.getText().toString().equals(""))
-                {
-                    five = 0;
-                }
-                else {
-                    five = (int) Integer.parseInt(fives.getText().toString());
-                }
-                if(ones.getText().toString().equals(""))
-                {
-                    one = 0;
-                }
-                else {
-                    one = (int) Integer.parseInt(ones.getText().toString());
-                }
-                if(quarters.getText().toString().equals(""))
-                {
-                    quarter = 0;
-                }
-                else {
-                    quarter = (int) Integer.parseInt(quarters.getText().toString());
-                }
-                if(dimes.getText().toString().equals(""))
-                {
-                    dime = 0;
-                }
-                else {
-                    dime = (int) Integer.parseInt(dimes.getText().toString());
-                }
-                if(nickels.getText().toString().equals(""))
-                {
-                    nickel = 0;
-                }
-                else {
-                    nickel = (int) Integer.parseInt(nickels.getText().toString());
-                }
-                if(cents.getText().toString().equals(""))
-                {
-                    cent = 0;
-                }
-                else {
-                    cent = (int) Integer.parseInt(cents.getText().toString());
-                }
-                calculate(hundred, fifty, twenty, ten, five, one, quarter, dime, nickel, cent);
-                totalDollars.setText("$" + total);
+                calculate();
             }
         });
 
@@ -144,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 clear();
-                totalDollars.setText("$0");
+                totalDollars.setText("$0.00");
                 hundreds.setText(null);
                 fiftys.setText(null);
                 twentys.setText(null);
@@ -299,6 +258,87 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void calculate() {
+        if(hundreds.getText().toString().equals(""))
+        {
+            hundred = 0;
+        }
+        else {
+            hundred = Integer.parseInt(hundreds.getText().toString());
+        }
+        if(fiftys.getText().toString().equals(""))
+        {
+            fifty = 0;
+        }
+        else {
+            fifty = Integer.parseInt(fiftys.getText().toString());
+        }
+        if(twentys.getText().toString().equals(""))
+        {
+            twenty = 0;
+        }
+        else {
+            twenty = Integer.parseInt(twentys.getText().toString());
+        }
+        if(tens.getText().toString().equals(""))
+        {
+            ten = 0;
+        }
+        else {
+            ten = Integer.parseInt(tens.getText().toString());
+        }
+        if(fives.getText().toString().equals(""))
+        {
+            five = 0;
+        }
+        else {
+            five = Integer.parseInt(fives.getText().toString());
+        }
+        if(ones.getText().toString().equals(""))
+        {
+            one = 0;
+        }
+        else {
+            one = Integer.parseInt(ones.getText().toString());
+        }
+        if(quarters.getText().toString().equals(""))
+        {
+            quarter = 0;
+        }
+        else {
+            quarter = Integer.parseInt(quarters.getText().toString());
+        }
+        if(dimes.getText().toString().equals(""))
+        {
+            dime = 0;
+        }
+        else {
+            dime = Integer.parseInt(dimes.getText().toString());
+        }
+        if(nickels.getText().toString().equals(""))
+        {
+            nickel = 0;
+        }
+        else {
+            nickel = Integer.parseInt(nickels.getText().toString());
+        }
+        if(cents.getText().toString().equals(""))
+        {
+            cent = 0;
+        }
+        else {
+            cent = Integer.parseInt(cents.getText().toString());
+        }
+        calculate(hundred, fifty, twenty, ten, five, one, quarter, dime, nickel, cent);
+        String money = "$" + total;
+        totalDollars.setText(money);
+        String temp = totalDollars.getText().toString();
+        if(temp.charAt(temp.length()-3) != '.' && !temp.contains("E")){
+            temp += "0";
+            totalDollars.setText(temp);
+        }
+    }
+
     public void calculate(int hun, int fif, int twe, int te, int fiv, int on, int qua, int dim, int nic, int cen)
     {
         total = 0;
@@ -307,11 +347,21 @@ public class MainActivity extends AppCompatActivity {
         total += 20 * twe;
         total += 10 * te;
         total += 5 * fiv;
-        total += 1 * on;
+        total += on;
         total += 0.25 * qua;
         total += 0.10 * dim;
         total += 0.05 * nic;
         total += 0.01 * cen;
+        total = round(total, 2);
+    }
+
+    public double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 
     public void clear()
@@ -331,218 +381,163 @@ public class MainActivity extends AppCompatActivity {
 
     public void increase(String currency)
     {
-        if(currency.equals("hundreds"))
-        {
-            if(isEmpty(hundreds))
-            {
-                hundred += 1;
-            }
-            else
-            {
-                add(hundreds);
-                hundred += 1;
-            }
-        }
-        else if(currency.equals("fiftys"))
-        {
-            if(isEmpty(fiftys))
-            {
-                fifty += 1;
-            }
-            else
-            {
-                add(fiftys);
-                fifty += 1;
-            }
-        }
-        else if(currency.equals("twentys"))
-        {
-            if(isEmpty(twentys))
-            {
-                twenty += 1;
-            }
-            else
-            {
-                add(twentys);
-                twenty += 1;
-            }
-        }
-        else if(currency.equals("tens"))
-        {
-            if(isEmpty(tens))
-            {
-                ten += 1;
-            }
-            else
-            {
-                add(tens);
-                ten += 1;
-            }
-        }
-        else if(currency.equals("fives"))
-        {
-            if(isEmpty(fives))
-            {
-                five += 1;
-            }
-            else
-            {
-                add(fives);
-                five += 1;
-            }
-        }
-        else if(currency.equals("ones"))
-        {
-            if(isEmpty(ones))
-            {
-                one += 1;
-            }
-            else
-            {
-                add(ones);
-                one += 1;
-            }
-        }
-        else if(currency.equals("quarters"))
-        {
-            if(isEmpty(quarters))
-            {
-                quarter += 1;
-            }
-            else
-            {
-                add(quarters);
-                quarter += 1;
-            }
-        }
-        else if(currency.equals("dimes"))
-        {
-            if(isEmpty(dimes))
-            {
-                dime += 1;
-            }
-            else
-            {
-                add(dimes);
-                dime += 1;
-            }
-        }
-        else if(currency.equals("nickels"))
-        {
-            if(isEmpty(nickels))
-            {
-                nickel += 1;
-            }
-            else
-            {
-                add(nickels);
-                nickel += 1;
-            }
-        }
-        else if(currency.equals("cents"))
-        {
-            if(isEmpty(cents))
-            {
-                cent += 1;
-            }
-            else
-            {
-                add(cents);
-                cent += 1;
-            }
+        switch (currency) {
+            case "hundreds":
+                if (isEmpty(hundreds)) {
+                    hundred += 1;
+                } else {
+                    add(hundreds);
+                    hundred += 1;
+                }
+                break;
+            case "fiftys":
+                if (isEmpty(fiftys)) {
+                    fifty += 1;
+                } else {
+                    add(fiftys);
+                    fifty += 1;
+                }
+                break;
+            case "twentys":
+                if (isEmpty(twentys)) {
+                    twenty += 1;
+                } else {
+                    add(twentys);
+                    twenty += 1;
+                }
+                break;
+            case "tens":
+                if (isEmpty(tens)) {
+                    ten += 1;
+                } else {
+                    add(tens);
+                    ten += 1;
+                }
+                break;
+            case "fives":
+                if (isEmpty(fives)) {
+                    five += 1;
+                } else {
+                    add(fives);
+                    five += 1;
+                }
+                break;
+            case "ones":
+                if (isEmpty(ones)) {
+                    one += 1;
+                } else {
+                    add(ones);
+                    one += 1;
+                }
+                break;
+            case "quarters":
+                if (isEmpty(quarters)) {
+                    quarter += 1;
+                } else {
+                    add(quarters);
+                    quarter += 1;
+                }
+                break;
+            case "dimes":
+                if (isEmpty(dimes)) {
+                    dime += 1;
+                } else {
+                    add(dimes);
+                    dime += 1;
+                }
+                break;
+            case "nickels":
+                if (isEmpty(nickels)) {
+                    nickel += 1;
+                } else {
+                    add(nickels);
+                    nickel += 1;
+                }
+                break;
+            case "cents":
+                if (isEmpty(cents)) {
+                    cent += 1;
+                } else {
+                    add(cents);
+                    cent += 1;
+                }
+                break;
         }
     }
 
     public void decrease(String currency)
     {
-        if(currency.equals("hundreds"))
-        {
-            if(checkZero(hundreds))
-            {
-                delete(hundreds);
-                hundred -= 1;
-            }
-        }
-        else if(currency.equals("fiftys"))
-        {
-            if(checkZero(fiftys))
-            {
-                delete(fiftys);
-                fifty -= 1;
-            }
-        }
-        else if(currency.equals("twentys"))
-        {
-            if(checkZero(twentys))
-            {
-                delete(twentys);
-                twenty -= 1;
-            }
-        }
-        else if(currency.equals("tens"))
-        {
-            if(checkZero(tens))
-            {
-                delete(tens);
-                ten -= 1;
-            }
-        }
-        else if(currency.equals("fives"))
-        {
-            if(checkZero(fives))
-            {
-                delete(fives);
-                five -= 1;
-            }
-        }
-        else if(currency.equals("ones"))
-        {
-            if(checkZero(ones))
-            {
-                delete(ones);
-                one -= 1;
-            }
-        }
-        else if(currency.equals("quarters"))
-        {
-            if(checkZero(quarters))
-            {
-                delete(quarters);
-                quarter -= 1;
-            }
-        }
-        else if(currency.equals("dimes"))
-        {
-            if(checkZero(dimes))
-            {
-                delete(dimes);
-                dime -= 1;
-            }
-        }
-        else if(currency.equals("nickels"))
-        {
-            if(checkZero(nickels))
-            {
-                delete(nickels);
-                nickel -= 1;
-            }
-        }
-        else if(currency.equals("cents"))
-        {
-            if(checkZero(cents))
-            {
-                delete(cents);
-                cent -= 1;
-            }
+        switch (currency) {
+            case "hundreds":
+                if (checkZero(hundreds)) {
+                    delete(hundreds);
+                    hundred -= 1;
+                }
+                break;
+            case "fiftys":
+                if (checkZero(fiftys)) {
+                    delete(fiftys);
+                    fifty -= 1;
+                }
+                break;
+            case "twentys":
+                if (checkZero(twentys)) {
+                    delete(twentys);
+                    twenty -= 1;
+                }
+                break;
+            case "tens":
+                if (checkZero(tens)) {
+                    delete(tens);
+                    ten -= 1;
+                }
+                break;
+            case "fives":
+                if (checkZero(fives)) {
+                    delete(fives);
+                    five -= 1;
+                }
+                break;
+            case "ones":
+                if (checkZero(ones)) {
+                    delete(ones);
+                    one -= 1;
+                }
+                break;
+            case "quarters":
+                if (checkZero(quarters)) {
+                    delete(quarters);
+                    quarter -= 1;
+                }
+                break;
+            case "dimes":
+                if (checkZero(dimes)) {
+                    delete(dimes);
+                    dime -= 1;
+                }
+                break;
+            case "nickels":
+                if (checkZero(nickels)) {
+                    delete(nickels);
+                    nickel -= 1;
+                }
+                break;
+            case "cents":
+                if (checkZero(cents)) {
+                    delete(cents);
+                    cent -= 1;
+                }
+                break;
         }
     }
 
     public boolean isEmpty(EditText text)
     {
-        boolean check = false;
+        boolean check;
         if(text.getText().toString().equals(""))
         {
-            text.setText(1 + "");
+            String temp = 1 + "";
+            text.setText(temp);
             check = true;
         }
         else
@@ -559,20 +554,12 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean checkZero(EditText text)
     {
-        boolean check = false;
-        if(!(text.getText().toString().equals("")) && !(text.getText().toString().equals("0")))
-        {
-            check = true;
-        }
-        else
-        {
-            check = false;
-        }
-        return check;
+        return !(text.getText().toString().equals("")) && !(text.getText().toString().equals("0"));
     }
 
     public void delete(EditText text)
     {
-        text.setText(Integer.parseInt(text.getText().toString()) - 1 + "");
+        String temp = Integer.parseInt(text.getText().toString()) - 1 + "";
+        text.setText(temp);
     }
 }
